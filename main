@@ -1,0 +1,83 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cstdlib>
+using namespace std;
+
+vector<char> wagony;
+vector<vector<char>> tory={{'A', 'A', 'B', 'B'},
+                           {'A', 'B', 'A', 'B'},
+                           {'C', 'D', 'A'},
+                           {'A', 'B', 'B', 'C'},
+                           {'A', 'B', 'D'}};
+int punkty=0;
+
+void generuj_wagony(){
+    int size=tory[0].size()+tory[1].size()+tory[2].size()+tory[3].size()+tory[4].size();
+    string seria="ABCCDCBA";
+    //randomizcja wagonów
+    for(int i=0;i<size;i++){
+        char(rand()%4+65);
+    }
+
+    for (char w : seria) {
+        wagony.push_back(w);
+    }
+}
+
+bool sprawdz_sklad(int torNum, char wagon) {
+    torNum-=1;
+    if(tory[torNum].back()==wagon){return true;}
+    else {return false;}
+}
+
+
+
+int main() {
+    srand (time(NULL));
+    generuj_wagony();
+    
+    while(true){
+        int wybor=1;
+        char w='a';
+    //0.wizualizacja
+    //1.wybór gdzie
+        while(w!='w'){
+        wybor=1;
+        w='a';
+        cout<<"podaj gdzie: ";
+        cin>>wybor;
+            if (wybor<2||wybor>5){
+                cout<<"prosze podac liczby z zakresu"<<endl;
+                continue;
+            }
+        cin>>w;
+        if(w!='w'){
+            continue;
+        }
+    }
+    
+    //2.sprawdzenie czy dobrz/pop_back,   wybor ->punkty
+
+    cout<<endl;
+    if(sprawdz_sklad(wybor,wagony.back())){
+        tory[wybor-1].pop_back();
+        cout<<"+1"<<endl;
+    }else{
+        punkty-=10;
+    }
+    for(int i=0;i<tory.size();i++){
+        
+    }
+    if(punkty<0){
+        cout<<"przegrales  :(";
+        return 0;
+    }
+
+    if(punkty==50){
+        cout<<"BRAWO WYGRALES!!  :)";
+        return 0;
+    }
+}
+    return 0;
+}
