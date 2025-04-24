@@ -15,12 +15,7 @@ int punkty=0;
 
 void generuj_wagony(){
     int size=tory[0].size()+tory[1].size()+tory[2].size()+tory[3].size()+tory[4].size();
-    string seria="ABCCDCBA";
-    //randomizcja wagonów
-    for(int i=0;i<size;i++){
-        char(rand()%4+65);
-    }
-
+    string seria="ABAABBBBABABDCDCBA";
     for (char w : seria) {
         wagony.push_back(w);
     }
