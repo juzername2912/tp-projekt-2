@@ -10,7 +10,6 @@ vector<vector<char>> tory={{'A', 'A', 'B', 'B'},
                            {'C', 'D', 'A'},
                            {'A', 'B', 'B', 'C'},
                            {'A', 'B', 'D'}};
-vector<vector<char>> tory_copy=tory;
 int punkty=0;
 
 void generuj_wagony(){
