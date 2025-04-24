@@ -15,7 +15,7 @@ int punkty=0;
 
 void generuj_wagony(){
     int size=tory[0].size()+tory[1].size()+tory[2].size()+tory[3].size()+tory[4].size();
-    string seria="ABAABBBBABABDCDCBA";
+    string seria="AAAABBBBABABDCDCBA";
     for (char w : seria) {
         wagony.push_back(w);
     }
@@ -27,12 +27,23 @@ bool sprawdz_sklad(int torNum, char wagon) {
     else {return false;}
 }
 
+void drawtor(int i){
+    for(int j=0;j<tory[i].size();j++){
+        cout<<tory[i][j];
+    }
+}
+
 void draw(){
-    cout<<"{w}====O==(1)=====|__|"<<endl;
-    cout<<"{w}     \\(2)=====|__|"<<endl;
-    cout<<"{w}      \\(3)====|__|"<<endl;
-    cout<<"{w}       \\(4)===|__|"<<endl;
-    cout<<"{w}        \\(5)==|__|"<<endl;
+    cout<<wagony.back()<<"====O=(1)=====";drawtor(0);
+    cout<<endl;
+    cout<<"      \\(2)=====";drawtor(1);
+    cout<<endl;
+    cout<<"       \\(3)====";drawtor(2);
+    cout<<endl;
+    cout<<"        \\(4)===";drawtor(3);
+    cout<<endl;
+    cout<<"         \\(5)==";drawtor(4);
+    cout<<endl;
     //|__|= sizeoftabeli
 }
 
@@ -55,6 +66,7 @@ int main() {
 
     //1.wybór gdzie
         while(true){
+            draw();
         wybor=notemptytor();
         w='a';
         cout<<"podaj gdzie: ";
@@ -76,7 +88,6 @@ int main() {
     if(sprawdz_sklad(wybor,wagony.back())){
         tory[wybor-1].pop_back();
         wagony.pop_back();
-        cout<<"+1"<<endl;
     }else{
         punkty-=10;
     }
